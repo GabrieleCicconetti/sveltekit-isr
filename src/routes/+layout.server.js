@@ -21,8 +21,8 @@ export const config = {
 /**
  * @type {{name: {first: string, last: string}}}
  */
-export async function load({ params }) {
-	console.log(params.revalidate)
+export async function load({ params, url }) {
+	console.log(url, url.searchParams)
 	let headers = {};
 	if (params.revalidate) {
 		console.log('rev')
