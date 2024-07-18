@@ -21,11 +21,10 @@ export const config = {
 /**
  * @type {{name: {first: string, last: string}}}
  */
-export async function load({ params, url }) {
-	const forceRevalidate = url.searchParams.get('revalidate');
-	console.log(forceRevalidate)
+export async function load({ params }) {
+	console.log(params.revalidate)
 	let headers = {};
-	if (forceRevalidate) {
+	if (params.revalidate) {
 		console.log('rev')
 		headers['x-prerender-revalidate'] = bypassToken;
 	}
