@@ -21,11 +21,10 @@ export const config = {
 /**
  * @type {{name: {first: string, last: string}}}
  */
-export async function load({ params, url }) {
-	console.log(url, url.searchParams)
+export async function load(ev) {
+	console.log(ev.cookies.get('rev'));
 	let headers = {};
-	if (params.revalidate) {
-		console.log('rev')
+	if (ev.cookies.get('rev')) {
 		headers['x-prerender-revalidate'] = bypassToken;
 	}
 	const res = await fetch('https://randomuser.me/api', {
