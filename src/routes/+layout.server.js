@@ -24,9 +24,9 @@ export const config = {
 export async function load(ev) {
 	console.log(ev.cookies.get('rev'));
 	let headers = {};
-	if (ev.cookies.get('rev')) {
+	// if (ev.cookies.get('rev')) {
 		headers['x-prerender-revalidate'] = bypassToken;
-	}
+	// }
 	const res = await fetch('https://randomuser.me/api', {
 		headers
 	});
