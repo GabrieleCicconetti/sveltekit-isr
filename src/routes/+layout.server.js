@@ -23,14 +23,16 @@ export const config = {
  */
 export async function load({ params, url }) {
 	const forceRevalidate = url.searchParams.get('revalidate');
+	console.log(forceRevalidate)
 	let headers = {};
 	if (forceRevalidate) {
+		console.log('rev')
 		headers['x-prerender-revalidate'] = bypassToken;
 	}
 	const res = await fetch('https://randomuser.me/api', {
 		headers
 	});
 	const data = await res.json();
-	console.log(data);
+	// console.log(data);
 	return data.results[0];
 }
