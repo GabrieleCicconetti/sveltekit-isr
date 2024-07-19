@@ -11,7 +11,7 @@ export const config = {
 		//
 		// Making a `GET` or `HEAD` request with `x-prerender-revalidate: <token>` will force the asset to be re-validated.
 		bypassToken,
-
+		allowQuery: ['rev']
 	}
 };
 
@@ -21,7 +21,7 @@ export const config = {
 export async function load(ev) {
 	const res = await fetch('https://randomuser.me/api');
 	const data = await res.json();
-	// console.log(data);
+	console.log(ev.url.searchParams.get('rev'));
 	return data.results[0];
 }
 
